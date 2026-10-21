@@ -230,7 +230,7 @@ A proper estimate would need item-level data and a variance components model.
 **Coverage is assumed, not measured.** The C values (0.15, 0.25, 0.40) are
 plausible but not derived from data. Measuring coverage requires defining a
 criterion construct and fitting a structural model, which needs deployment
-outcome data nobody has published.
+outcome data, and I have not found any published.
 
 **Single benchmark.** The analysis focuses on SWE-bench Verified because it
 has the best published variance data. Other benchmarks (WebArena, tau-bench,
