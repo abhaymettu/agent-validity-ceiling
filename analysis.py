@@ -8,8 +8,10 @@ maximum predictive validity a benchmark score can achieve?
 All inputs are from published papers (no API calls, no spend).
 """
 
-import numpy as np
+import argparse
 import json
+
+import numpy as np
 from dataclasses import dataclass, asdict
 
 # ---------------------------------------------------------------------------
@@ -243,6 +245,11 @@ def attenuation_examples(rho_x: float, rho_y: float):
 # ---------------------------------------------------------------------------
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
+    ap.add_argument("--out", default="results.json",
+                    help="where to write results (default: results.json in the current directory)")
+    args = ap.parse_args()
+
     print("=" * 72)
     print("VALIDITY CEILING FOR AGENT BENCHMARKS")
     print("Reliability-corrected predictive validity analysis")
@@ -280,8 +287,11 @@ def main():
         print(f"  {s.label.split(' | ')[0]:45s}  {s.rho_benchmark:6.3f}  "
               f"{s.coverage:5.2f}  {s.ceiling_r2:8.3f}  {s.ceiling_r:6.3f}")
 
+    # Every frontier number below uses this one computed reliability.
+    rho_frontier = next(r.icc for r in rel_estimates if "Frontier" in r.label)
+
     # 4. Full ceiling table for the frontier
-    print("\n--- Full ceiling table: Frontier models (rho_X=0.918) ---\n")
+    print(f"\n--- Full ceiling table: Frontier models (rho_X={rho_frontier:.3f}) ---\n")
     frontier = [s for s in scenarios
                 if "Frontier" in s.label]
     print(f"  {'Coverage':>20s}  {'rho_Y':>6s}  {'Ceil R^2':>8s}  {'Ceil r':>6s}")
@@ -295,15 +305,15 @@ def main():
 
     # 5. Gap decomposition for the frontier, moderate scenario
     print("\n--- Gap decomposition: Frontier, C=0.25, rho_Y=0.75 ---\n")
-    gap = decompose_validity_gap(0.918, 0.75, 0.25)
+    gap = decompose_validity_gap(rho_frontier, 0.75, 0.25)
     for k, v in gap.items():
         pct = v * 100
         print(f"  {k:30s}  {v:.4f}  ({pct:5.1f}%)")
 
     # 6. Attenuation correction examples
     print("\n--- Disattenuation: observed -> corrected r ---")
-    print("    (Frontier rho_X=0.918, Moderate rho_Y=0.75)\n")
-    examples = attenuation_examples(0.918, 0.75)
+    print(f"    (Frontier rho_X={rho_frontier:.3f}, Moderate rho_Y=0.75)\n")
+    examples = attenuation_examples(rho_frontier, 0.75)
     print(f"  {'r_obs':>6s}  {'r_corr':>6s}  {'inflation':>9s}")
     print("  " + "-" * 25)
     for e in examples:
@@ -328,7 +338,7 @@ def main():
     print(f"  V_total range: [{mwv['v_total_lo']:.3f}, {mwv['v_total_hi']:.3f}]")
     print(f"  V_total midpoint: {mwv['v_total_midpoint']:.3f}")
     print(f"  Our frontier ceiling (C=0.25, rho_Y=0.75): "
-          f"R^2 = {attenuation_ceiling_r2(0.918, 0.75, 0.25):.3f}")
+          f"R^2 = {attenuation_ceiling_r2(rho_frontier, 0.75, 0.25):.3f}")
     print(f"  Our close-comparison ceiling: R^2 = {ceiling_close:.3f}")
     print(f"\n  Convergent: both frameworks put the ceiling well below 0.25")
     print(f"  for the comparisons that leaderboard consumers care about most.")
@@ -347,9 +357,10 @@ def main():
         "attenuation_examples": examples,
     }
 
-    with open("/Users/abhay/code/agent-validity-ceiling/results.json", "w") as f:
+    with open(args.out, "w") as f:
         json.dump(output, f, indent=2)
-    print(f"\n  Results written to results.json")
+        f.write("\n")
+    print(f"\n  Results written to {args.out}")
 
     print("\n" + "=" * 72)
 

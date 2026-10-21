@@ -146,10 +146,10 @@ reliability (rho_Y = 0.75):
 
 | Source                   | Fraction |
 |:-------------------------|---------:|
-| Benchmark unreliability  |     8.2% |
-| Criterion unreliability  |    22.9% |
-| Uncovered variance       |    51.6% |
-| **Ceiling (reachable)**  | **17.2%**|
+| Benchmark unreliability  |     5.9% |
+| Criterion unreliability  |    23.5% |
+| Uncovered variance       |    52.9% |
+| **Ceiling (reachable)**  | **17.6%**|
 
 Uncovered variance dominates. The largest gap is not benchmark noise or
 criterion noise; it is that the benchmark measures a narrow slice of what
@@ -173,11 +173,11 @@ to measurement noise.
 
 | r_observed | r_corrected | Inflation |
 |-----------:|------------:|----------:|
-|       0.20 |       0.241 |    +20.5% |
-|       0.30 |       0.362 |    +20.5% |
-|       0.40 |       0.482 |    +20.5% |
-|       0.50 |       0.603 |    +20.5% |
-|       0.60 |       0.723 |    +20.5% |
+|       0.20 |       0.238 |    +19.0% |
+|       0.30 |       0.357 |    +19.0% |
+|       0.40 |       0.476 |    +19.0% |
+|       0.50 |       0.595 |    +19.0% |
+|       0.60 |       0.714 |    +19.0% |
 
 Inflation is constant because the attenuation factor is multiplicative.
 
@@ -209,14 +209,14 @@ leaderboard consumers care about most have the lowest validity.
    perform better in production.
 
 4. **Coverage is the binding constraint, not noise.** The gap decomposition
-   shows uncovered variance at 51.6%. Making the benchmark more reliable
-   (reducing the 8.2% slice) helps only marginally. The far larger win is
+   shows uncovered variance at 52.9%. Making the benchmark more reliable
+   (reducing the 5.9% slice) helps only marginally. The far larger win is
    expanding what the benchmark measures.
 
 5. **Disattenuation is a free correction nobody applies.** Any observed
    benchmark-to-deployment correlation should be corrected for measurement
    unreliability before drawing conclusions. The correction inflates the
-   coefficient by about 20% for frontier-reliability benchmarks. Without
+   coefficient by about 19% for frontier-reliability benchmarks. Without
    it, you are systematically underestimating the benchmark's construct-level
    validity and overestimating the gap that "better benchmarks" could close.
 
@@ -276,4 +276,5 @@ ceiling.
 ## Reproducibility
 
 `python3 analysis.py` regenerates all numbers. No dependencies beyond numpy.
+`python3 -m unittest test_reproduce` checks that results.json regenerates exactly.
 All inputs are hardcoded from published papers.
