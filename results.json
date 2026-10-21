@@ -1,0 +1,300 @@
+{
+  "within_run_variance": {
+    "source": "Bjarnason, Silva & Monperrus (2026)",
+    "median_sd_pp": 1.25,
+    "configs": [
+      {
+        "name": "Qwen3-32B + nano-agent",
+        "temp": 0.6,
+        "sd": 0.7,
+        "lo": 15.0,
+        "hi": 17.2
+      },
+      {
+        "name": "Qwen3-32B + R2E-Gym",
+        "temp": 0.6,
+        "sd": 1.4,
+        "lo": 21.4,
+        "hi": 26.4
+      },
+      {
+        "name": "DeepSWE + nano-agent",
+        "temp": 1.0,
+        "sd": 1.0,
+        "lo": 28.8,
+        "hi": 32.4
+      },
+      {
+        "name": "DeepSWE + R2E-Gym",
+        "temp": 1.0,
+        "sd": 1.5,
+        "lo": 31.6,
+        "hi": 37.0
+      },
+      {
+        "name": "Devstral-2 + nano-agent",
+        "temp": 0.2,
+        "sd": 1.1,
+        "lo": 61.8,
+        "hi": 65.0
+      },
+      {
+        "name": "Devstral-2 + R2E-Gym",
+        "temp": 0.2,
+        "sd": 1.5,
+        "lo": 32.2,
+        "hi": 37.0
+      },
+      {
+        "name": "DeepSWE + nano-agent (t=0)",
+        "temp": 0.0,
+        "sd": 1.0,
+        "lo": 18.2,
+        "hi": 21.4
+      },
+      {
+        "name": "Qwen3-32B + R2E-Gym (t=0)",
+        "temp": 0.0,
+        "sd": 1.8,
+        "lo": 19.8,
+        "hi": 25.2
+      }
+    ]
+  },
+  "reliability_estimates": [
+    {
+      "label": "Full leaderboard (15-72%)",
+      "sigma2_between": 225.0,
+      "sigma2_within": 1.5625,
+      "icc": 0.993,
+      "n_note": "sigma_within=1.2 pp (median of 8 configs)"
+    },
+    {
+      "label": "Frontier models (55-72%)",
+      "sigma2_between": 25.0,
+      "sigma2_within": 1.5625,
+      "icc": 0.941,
+      "n_note": "sigma_within=1.2 pp (median of 8 configs)"
+    },
+    {
+      "label": "Close comparisons (3-5 pp gap)",
+      "sigma2_between": 4.0,
+      "sigma2_within": 1.5625,
+      "icc": 0.719,
+      "n_note": "sigma_within=1.2 pp (median of 8 configs)"
+    },
+    {
+      "label": "Scaffold variants (same model)",
+      "sigma2_between": 12.25,
+      "sigma2_within": 1.5625,
+      "icc": 0.887,
+      "n_note": "sigma_within=1.2 pp (median of 8 configs)"
+    }
+  ],
+  "key_ceilings": [
+    {
+      "label": "Full leaderboard (15-72%) | Generous (C=0.40) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.993,
+      "rho_criterion": 0.75,
+      "coverage": 0.4,
+      "ceiling_r2": 0.298,
+      "ceiling_r": 0.546
+    },
+    {
+      "label": "Full leaderboard (15-72%) | Moderate (C=0.25) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.993,
+      "rho_criterion": 0.75,
+      "coverage": 0.25,
+      "ceiling_r2": 0.186,
+      "ceiling_r": 0.431
+    },
+    {
+      "label": "Full leaderboard (15-72%) | Conservative (C=0.15) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.993,
+      "rho_criterion": 0.75,
+      "coverage": 0.15,
+      "ceiling_r2": 0.112,
+      "ceiling_r": 0.334
+    },
+    {
+      "label": "Frontier models (55-72%) | Generous (C=0.40) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.4,
+      "ceiling_r2": 0.282,
+      "ceiling_r": 0.531
+    },
+    {
+      "label": "Frontier models (55-72%) | Moderate (C=0.25) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.25,
+      "ceiling_r2": 0.176,
+      "ceiling_r": 0.42
+    },
+    {
+      "label": "Frontier models (55-72%) | Conservative (C=0.15) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.15,
+      "ceiling_r2": 0.106,
+      "ceiling_r": 0.325
+    },
+    {
+      "label": "Close comparisons (3-5 pp gap) | Generous (C=0.40) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.719,
+      "rho_criterion": 0.75,
+      "coverage": 0.4,
+      "ceiling_r2": 0.216,
+      "ceiling_r": 0.464
+    },
+    {
+      "label": "Close comparisons (3-5 pp gap) | Moderate (C=0.25) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.719,
+      "rho_criterion": 0.75,
+      "coverage": 0.25,
+      "ceiling_r2": 0.135,
+      "ceiling_r": 0.367
+    },
+    {
+      "label": "Close comparisons (3-5 pp gap) | Conservative (C=0.15) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.719,
+      "rho_criterion": 0.75,
+      "coverage": 0.15,
+      "ceiling_r2": 0.081,
+      "ceiling_r": 0.284
+    },
+    {
+      "label": "Scaffold variants (same model) | Generous (C=0.40) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.887,
+      "rho_criterion": 0.75,
+      "coverage": 0.4,
+      "ceiling_r2": 0.266,
+      "ceiling_r": 0.516
+    },
+    {
+      "label": "Scaffold variants (same model) | Moderate (C=0.25) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.887,
+      "rho_criterion": 0.75,
+      "coverage": 0.25,
+      "ceiling_r2": 0.166,
+      "ceiling_r": 0.408
+    },
+    {
+      "label": "Scaffold variants (same model) | Conservative (C=0.15) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.887,
+      "rho_criterion": 0.75,
+      "coverage": 0.15,
+      "ceiling_r2": 0.1,
+      "ceiling_r": 0.316
+    }
+  ],
+  "frontier_ceilings": [
+    {
+      "label": "Frontier models (55-72%) | Generous (C=0.40) | High (rho_Y=0.90)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.9,
+      "coverage": 0.4,
+      "ceiling_r2": 0.339,
+      "ceiling_r": 0.582
+    },
+    {
+      "label": "Frontier models (55-72%) | Generous (C=0.40) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.4,
+      "ceiling_r2": 0.282,
+      "ceiling_r": 0.531
+    },
+    {
+      "label": "Frontier models (55-72%) | Generous (C=0.40) | Low (rho_Y=0.60)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.6,
+      "coverage": 0.4,
+      "ceiling_r2": 0.226,
+      "ceiling_r": 0.475
+    },
+    {
+      "label": "Frontier models (55-72%) | Moderate (C=0.25) | High (rho_Y=0.90)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.9,
+      "coverage": 0.25,
+      "ceiling_r2": 0.212,
+      "ceiling_r": 0.46
+    },
+    {
+      "label": "Frontier models (55-72%) | Moderate (C=0.25) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.25,
+      "ceiling_r2": 0.176,
+      "ceiling_r": 0.42
+    },
+    {
+      "label": "Frontier models (55-72%) | Moderate (C=0.25) | Low (rho_Y=0.60)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.6,
+      "coverage": 0.25,
+      "ceiling_r2": 0.141,
+      "ceiling_r": 0.376
+    },
+    {
+      "label": "Frontier models (55-72%) | Conservative (C=0.15) | High (rho_Y=0.90)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.9,
+      "coverage": 0.15,
+      "ceiling_r2": 0.127,
+      "ceiling_r": 0.356
+    },
+    {
+      "label": "Frontier models (55-72%) | Conservative (C=0.15) | Moderate (rho_Y=0.75)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.75,
+      "coverage": 0.15,
+      "ceiling_r2": 0.106,
+      "ceiling_r": 0.325
+    },
+    {
+      "label": "Frontier models (55-72%) | Conservative (C=0.15) | Low (rho_Y=0.60)",
+      "rho_benchmark": 0.941,
+      "rho_criterion": 0.6,
+      "coverage": 0.15,
+      "ceiling_r2": 0.085,
+      "ceiling_r": 0.291
+    }
+  ],
+  "gap_decomposition": {
+    "benchmark_unreliability": 0.082,
+    "criterion_unreliability": 0.2295,
+    "uncovered_variance": 0.5164,
+    "ceiling": 0.1721,
+    "total": 1.0
+  },
+  "attenuation_examples": [
+    {
+      "r_observed": 0.2,
+      "r_corrected": 0.241,
+      "pct_increase": 20.5
+    },
+    {
+      "r_observed": 0.3,
+      "r_corrected": 0.362,
+      "pct_increase": 20.5
+    },
+    {
+      "r_observed": 0.4,
+      "r_corrected": 0.482,
+      "pct_increase": 20.5
+    },
+    {
+      "r_observed": 0.5,
+      "r_corrected": 0.603,
+      "pct_increase": 20.5
+    },
+    {
+      "r_observed": 0.6,
+      "r_corrected": 0.723,
+      "pct_increase": 20.5
+    }
+  ]
+}
