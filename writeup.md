@@ -11,8 +11,8 @@ Abhay Mettu, October 2026
 
 Every leaderboard comparison assumes the benchmark score predicts something
 about deployment performance. The attenuation formula from classical test
-theory gives the upper bound on that prediction. Nobody has applied it to
-agent benchmarks. This writeup does.
+theory gives the upper bound on that prediction. I have not found it applied
+to agent benchmarks. This writeup does.
 
 The short version: for the full leaderboard the ceiling is high enough that
 benchmark noise is not the main problem. For frontier models (where the
@@ -213,7 +213,7 @@ leaderboard consumers care about most have the lowest validity.
    (reducing the 5.9% slice) helps only marginally. The far larger win is
    expanding what the benchmark measures.
 
-5. **Disattenuation is a free correction nobody applies.** Any observed
+5. **Disattenuation is a free correction I have not found applied.** Any observed
    benchmark-to-deployment correlation should be corrected for measurement
    unreliability before drawing conclusions. The correction inflates the
    coefficient by about 19% for frontier-reliability benchmarks. Without
@@ -261,7 +261,7 @@ ceiling.
 **Sources.**
 
 - Bjarnason, B., Silva, A., & Monperrus, M. (2026). On Randomness in
-  Agentic Evals. ICLR 2026. 60,000 trajectories on SWE-bench Verified.
+  Agentic Evals. arXiv 2602.07150. 60,000 trajectories on SWE-bench Verified.
 - Measurement Without Validity: The Compounding Reliability Problem in
   Agentic AI Evaluation. arXiv 2608.00794. IRR survey and multiplicative
   validity model.
