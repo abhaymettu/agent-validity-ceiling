@@ -1,6 +1,9 @@
 # agent-validity-ceiling
 
-**SWE-bench Verified ranks the whole leaderboard almost perfectly (reliability 0.994) and its top 20 poorly (about 0.68). Measured against SWE-bench Multilingual, its coverage is high (0.96, or 0.80 without the weakest model), so for near transfer the limit on what the score predicts is noise more than what the benchmark leaves out.**
+**How much can a benchmark score tell you? This repo measures SWE-bench Verified the way psychometrics measures a
+test: how reliably it ranks the systems on it, and how much of what it is meant to predict it can predict at all.**
+
+The answer depends on which part of the leaderboard you look at. SWE-bench Verified ranks the whole leaderboard almost perfectly (reliability 0.994) and its top 20 poorly (about 0.68). Measured against SWE-bench Multilingual, its coverage is high (0.96, or 0.80 without the weakest model), so for near transfer the limit on what the score predicts is noise more than what the benchmark leaves out.
 
 Part of [benchmeasure](https://github.com/abhaymettu/benchmeasure), benchmarks treated as measurement instruments: reliability (this repo), invariance ([benchdif](https://github.com/abhaymettu/benchdif)), and the scorer ([judge-reliability](https://github.com/abhaymettu/judge-reliability)). Paper: [benchmeasure.pdf](https://github.com/abhaymettu/benchmeasure/blob/main/paper/benchmeasure.pdf).
 
