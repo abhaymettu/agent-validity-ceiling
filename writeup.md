@@ -7,6 +7,17 @@ Abhay Mettu, October 2026
 
 ---
 
+> **Correction, November 2026.** This writeup filled the ceiling's inputs with published
+> run variance, between-model spreads read off the leaderboard by eye, and assumed coverage.
+> With every input now estimated from the public per-task results of 173 submissions
+> ([benchmeasure](https://github.com/abhaymettu/benchmeasure)), two conclusions change.
+> Frontier reliability is lower than assumed here: about 0.68 for the top 20, not 0.941,
+> because the real spread among leaders is about 1.6 points, not 5. And coverage of a
+> near-transfer criterion (SWE-bench Multilingual, same models and scaffold) is 0.96
+> (0.80 without the weakest model), not 0.25. So for near transfer, noise rather than
+> coverage limits what the score predicts, and point 4 of "What this means" below does not hold. Coverage of deployment
+> usefulness is still unmeasured. The numbers below are kept as the original record.
+
 ## The question
 
 Every leaderboard comparison assumes the benchmark score predicts something
