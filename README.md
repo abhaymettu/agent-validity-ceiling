@@ -94,4 +94,4 @@ Each public submission in [SWE-bench/experiments](https://github.com/SWE-bench/e
 }
 ```
 
-MIT license.
+Code under the MIT license; data from the public SWE-bench experiments repository.
